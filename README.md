@@ -11,11 +11,9 @@
 	- SGBD:
 		- Postgresql
 	- Relatórios:
-		- Jaspersoft Studio
-		
+		- Jaspersoft Studio		
 	- Git
-
-	Curso de Git: https://www.udemy.com/git-e-github-para-iniciantes/
+		- Curso de Git: https://www.udemy.com/git-e-github-para-iniciantes/
 	
 	
 ## Projetos:
