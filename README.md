@@ -1,4 +1,4 @@
-# Aulas da disciplina PW25S - 2020-1
+# Aulas da disciplina PW25S-5SI - 2020-2
 
 ## Softwares
 
@@ -23,7 +23,7 @@
 O conteúdo do projeto é uma introdução sobre os *frameworks* **Spring e Spring Boot**.
 
 - ### aula2
-O conteúdo do projeto é uma introdução ao *frameworks* **SpringData**.
+O conteúdo do projeto é uma introdução ao *framework* **SpringData**.
 
 - ### aula3
 O conteúdo do projeto é uma introdução ao *framework* **SpringMVC** e ao *template engine* **Thymeleaf**.
@@ -32,4 +32,4 @@ O conteúdo do projeto é uma introdução ao *framework* **SpringMVC** e ao *te
 O conteúdo do projeto é uma introdução ao *framework* **SpringSecurity**.
 
 - ### aula5
-No conteúdo do projeto são abordados conceitos de **JavaScript** e **Ajax**.
+No conteúdo do projeto são abordados conceitos de **JavaScript** e **Ajax** em conjunto com os *frameworks* **Spring e Spring Boot**.
