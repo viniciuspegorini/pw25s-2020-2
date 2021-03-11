@@ -5,11 +5,7 @@ import br.edu.utfpr.pb.pw25s.aula3.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("categoria")
@@ -20,13 +16,12 @@ public class CategoriaController {
 
     @GetMapping
     private String getAll(Model model) {
-        model.addAttribute("categorias", categoriaService.findAll());
+        model.addAttribute("categorias", categoriaService.findAllByOrderById());
         return "categoria/list";
     }
 
     @GetMapping(value = {"new", "novo"})
     private String form(Model model) {
-
         model.addAttribute("categoria", new Categoria());
         return "categoria/form";
     }
@@ -39,4 +34,21 @@ public class CategoriaController {
         return "redirect:/categoria";
     }
 
+    @GetMapping("{id}") // localhost:8025/categoria/1
+    private String form(@PathVariable("id") Long id, Model model) {
+
+        model.addAttribute("categoria", categoriaService.findOne(id));
+
+        return "categoria/form";
+    }
+
+    @DeleteMapping("{id}")
+    private String delete(@PathVariable("id") Long id) {
+        try {
+            categoriaService.delete(id);
+        } catch (Exception ex) {
+
+        }
+        return "redirect:/categoria";
+    }
 }
