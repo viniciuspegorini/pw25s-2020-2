@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -20,7 +22,8 @@ public class Produto implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	@NotEmpty(message = "O campo 'nome' deve ser preenchido!")
 	@Column(length = 100, nullable = false)
 	private String nome;
 	
@@ -28,8 +31,9 @@ public class Produto implements Serializable{
 	private String descricao;
 	
 	@Column(nullable = false)
-	private Double valor; 
-	
+	private Double valor;
+
+	@NotNull(message = "O campo 'categoria' deve ser preenchido!")
 	@ManyToOne
 	@JoinColumn(name = "categoria_id", referencedColumnName = "id")
 	private Categoria categoria;
