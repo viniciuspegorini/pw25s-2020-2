@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>UTFPR</title>
+
+	<link rel="shortcut icon" th:href="@{/images/favicon.ico}"/>
+
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap-datepicker/1.9.0/dist/css/bootstrap-datepicker.min.css}"/>
+	<link rel="stylesheet" th:href="@{/webjars/sweetalert2/10.15.5/dist/sweetalert2.min.css}"/>
+	<link rel="stylesheet" th:href="@{/webjars/fontawesome/4.7.0/css/font-awesome.min.css}"/>
+
+	<link rel="stylesheet" th:href="@{/css/estilo.css}"/>
+</head>
+
+<body>
+	<header>
+		<!-- Fixed navbar -->
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+			<a class="navbar-brand  hidden-xs" href="/"> <img
+					class="small-logo" alt="UTFPR"
+					th:src="@{/images/logo.png}" />
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarCollapse" aria-controls="navbarCollapse"
+					aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/home') ? 'active':''}">
+						<a class="nav-link"  th:href="@{/home}"><i class="fa fa-home"></i> Principal</a>
+					</li>
+					<li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/genero') ? 'active':''}">
+						<a class="nav-link" th:href="@{/genero}"><i class="fa fa-book"></i> Gêneros</a>
+					</li>
+					<li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/marca') ? 'active':''}">
+						<a class="nav-link" th:href="@{/marca/page}"><i class="fa fa-film"></i> Marcas</a>
+					</li>
+					<li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/produto') ? 'active':''}">
+						<a class="nav-link" th:href="@{/produto}"><i class="fa fa-tv"></i> Produto</a>
+					</li>
+				</ul>
+				<a th:href="@{/logout}" class="btn btn-outline-danger"><i class="fa fa-sign-out-alt"></i> Sair</a>
+			</div>
+		</nav>
+	</header>
+
+	<section class="ut-layout-content  js-content" layout:fragment="conteudo">
+		As págias serão carregadas aqui...
+	</section>
+	<footer class="ut-layout-footer  js-content">
+		<div class="container-fluid">
+			<span class="ut-footer-disclaimer">&copy; 2019 UTFPR. Todos os direitos reservados.</span>
+		</div>
+	</footer>
+	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap-datepicker/1.9.0/dist/js/bootstrap-datepicker.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap-datepicker/1.9.0/dist/locales/bootstrap-datepicker.pt-BR.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/sweetalert2/10.15.5/dist/sweetalert2.min.js}"></script>
+
+    <script type="text/javascript">
+    	$('.datepicker').datepicker({
+    		format: 'dd/mm/yyyy',
+    		autoclose: true
+    	});
+    </script>
+
+</body>
+</html>
