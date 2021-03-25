@@ -1,10 +1,13 @@
 package br.edu.utfpr.pb.pw25s.aula5.controller;
 
+import br.edu.utfpr.pb.pw25s.aula5.model.Categoria;
 import br.edu.utfpr.pb.pw25s.aula5.model.Produto;
 import br.edu.utfpr.pb.pw25s.aula5.service.CategoriaService;
 import br.edu.utfpr.pb.pw25s.aula5.service.MarcaService;
 import br.edu.utfpr.pb.pw25s.aula5.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 @Controller
@@ -26,11 +33,34 @@ public class ProdutoController {
 	private MarcaService marcaService;
 
 	
-	@GetMapping
+	@GetMapping("old")
 	public String list(Model model) {
 		model.addAttribute("produtos", produtoService.findAll());
 		return "produto/list";
 	}
+
+	@GetMapping() // /produto?page=1&size=5
+	public String list(
+			@RequestParam("page") Optional<Integer> page,
+			@RequestParam("size") Optional<Integer> size,
+			Model model) {
+		int currentPage = page.orElse(1);
+		int pageSize = size.orElse(5);
+
+		Page<Produto> list = this.produtoService.findAll(PageRequest.of(currentPage - 1, pageSize));
+
+		model.addAttribute("produtos", list);
+
+		if (list.getTotalPages() > 0) {
+			List<Integer> pageNumbers = IntStream.rangeClosed(1, list.getTotalPages())
+					.boxed().collect(Collectors.toList());
+			model.addAttribute("pageNumbers", pageNumbers);
+		}
+
+		return "produto/list";
+	}
+
+
 	
 	@GetMapping(value = {"new", "novo", "form"})
 	public String form(Model model) {

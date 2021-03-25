@@ -56,17 +56,13 @@ public class CategoriaController {
 	}
 	
 	@DeleteMapping("{id}") // /categoria/25
-	public String delete(@PathVariable Long id,
-						 RedirectAttributes attributes) {
+	public ResponseEntity<?> delete(@PathVariable Long id) {
 		try {
 			categoriaService.delete(id);
-			attributes.addFlashAttribute("sucesso", 
-					"Registro removido com sucesso!");
+			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
-			attributes.addFlashAttribute("erro", 
-					"Falha ao remover o registro!");
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return "redirect:/categoria";
 	}
 
 }

@@ -7,6 +7,7 @@
 <head>
 </head>
 <body>
+
 <section layout:fragment="conteudo">
     <div class="container" style="margin-top:100px;">
         <h1>Lista de Categorias</h1>
@@ -53,19 +54,30 @@
                 </td>
                 <!-- REMOVER -->
                 <td>
-                    <form method="post" th:action="@{/categoria/{id}?_method=DELETE(id=${categoria.id})}">
-                        <input type="hidden" name="_method" value="DELETE">
+                    <form th:method="post" th:action="@{/categoria/{id}?_method=DELETE(id=${categoria.id})}"
+                        onsubmit="return removerAjax(this, '/categoria');">
+
                         <button type="submit" class="btn btn-danger">
-                            <i class="fa fa-trash ml-2"></i>
+                            <i class="fa fa-trash ml-2"></i> Ajax
                         </button>
                     </form>
+
+                    <a th:href="'javascript:removerJquery('+ ${categoria.id} + ',\'/categoria\');'"
+                       class="btn btn-danger">
+                        <i class="fa fa-trash ml-2"></i> jQuery
+                    </a>
                 </td>
             </tr>
             </tbody>
         </table> <!-- FIM TABLE -->
-
     </div>
+
 </section>
+
+<th:block layout:fragment="javascript">
+    <script type="text/javascript" th:src="@{/js/crud-categoria.js}"></script>
+</th:block>
+
 </body>
 </html>
         

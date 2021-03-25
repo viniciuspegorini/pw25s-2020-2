@@ -68,7 +68,26 @@
             </tr>
             </tbody>
         </table> <!-- FIM TABLE -->
+        <nav>
+            <ul class="pagination" th:if="${produtos.totalPages > 0}">
+                <li class="page-item"
+                    th:classappend="${pageNumber==produtos.number + 1} ? active"
+                    th:each="pageNumber: ${pageNumbers}">
+                    <a class="page-link"
+                       th:href="@{/produto(size=${produtos.size}, page=${pageNumber})}"
+                        th:text="${pageNumber}"></a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </section>
 </body>
 </html>
+
+
+
+
+
+
+
+

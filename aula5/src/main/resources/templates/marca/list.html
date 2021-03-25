@@ -42,7 +42,7 @@
     				</tr>
     			</thead>
     			<tbody>
-    				<tr th:each="marca: ${marcas}">
+    				<tr th:id="'row_' + ${marca.id}" th:each="marca: ${marcas}">
     					<td th:text="${marca.id}">código</td>
     					<td th:text="${marca.nome}">nome</td>
 <!-- EDITAR -->
@@ -53,12 +53,10 @@
 </td>
 <!-- REMOVER -->
 <td>
-<form th:method="post"
-	th:action="@{/marca/{id}?_method=DELETE(id=${marca.id})}">
-	<button type="submit" class="btn btn-danger">
-		<i class="fa fa-trash ml-2"></i>
-	</button>
-</form>
+	<a th:href="'javascript:removerJquery('+ ${marca.id} + ',\'/marca\');'"
+	   class="btn btn-danger">
+		<i class="fa fa-trash ml-2"></i> jQuery
+	</a>
 </td>
     				</tr>
     			</tbody>
@@ -66,6 +64,11 @@
     		
         </div>
 	</section>
+
+	<th:block layout:fragment="javascript">
+		<script type="text/javascript" th:src="@{/js/crud-marca.js}"></script>
+	</th:block>
+
 </body>
 </html>
         

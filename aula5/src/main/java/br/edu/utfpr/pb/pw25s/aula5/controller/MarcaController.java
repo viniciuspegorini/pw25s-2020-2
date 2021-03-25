@@ -3,6 +3,8 @@ package br.edu.utfpr.pb.pw25s.aula5.controller;
 import br.edu.utfpr.pb.pw25s.aula5.model.Marca;
 import br.edu.utfpr.pb.pw25s.aula5.service.MarcaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -54,17 +56,13 @@ public class MarcaController {
 	}
 	
 	@DeleteMapping("{id}") // /marca/25
-	public String delete(@PathVariable Long id,
-						 RedirectAttributes attributes) {
+	public ResponseEntity<?> delete(@PathVariable Long id) {
 		try {
 			marcaService.delete(id);
-			attributes.addFlashAttribute("sucesso", 
-					"Registro removido com sucesso!");
+			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
-			attributes.addFlashAttribute("erro", 
-					"Falha ao remover o registro!");
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return "redirect:/marca";
 	}
 }
 
