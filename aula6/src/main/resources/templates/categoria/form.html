@@ -13,7 +13,7 @@
         	<h2>Formulário de Cadastro - Categoria</h2>
         	
         	<div class="row">
-        		<form th:action="@{/categoria}" method="post"
+        		<form th:id="form" th:action="@{/categoria}" method="post"
         			th:object="${categoria}">
 					<!-- onsubmit="return salvar('/genero');" -->
         			<div class="row">
@@ -29,6 +29,9 @@
 	        				<label for="nome">Nome</label>
 	        				<input type="text" class="form-control"
 	        					th:field="*{nome}"
+								   data-parsley-required
+								   data-parsley-minlength="5"
+								   data-parsley-error-message="O campo nome é obrigatório e deve ter no mínimo 5 caracteres."
 								   />
         					<span th:if="${#fields.hasErrors('nome')}"
         						th:errors="*{nome}"

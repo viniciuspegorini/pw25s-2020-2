@@ -1,11 +1,20 @@
 "use strict";
 
+$('#form').submit(function(e){
+	$('#form').parsley().validate();
+
+	if (!$('#form').parsley().isValid()){
+		return false;
+	}
+
+}); //FIM FORM SUBMIT
+
 function removerAjax(oFormElement, urlDestino) {
 	if (window.confirm("Você realmente deseja remover o registro?!")) {
 		var http = new XMLHttpRequest();
 		http.open(oFormElement.method, oFormElement.action, true);
 		http.onreadystatechange = function() {
-			alert("Status: " + http.readyState);
+			alert("Status: " + http.readyState + " - HTTP = " + http.status);
 			if (http.readyState === 4) {
 				if (http.status === 200) {
 					alert("Registro removido com sucesso!");

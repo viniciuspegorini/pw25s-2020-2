@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout-padrao}">
+<head>
+
+</head>
+<body>
+<section layout:fragment="conteudo">
+    <div class="page-header" style="margin-top:100px;">
+        <div class="container-fluid">
+            <div class="jumbotron">
+                <h1>Bem vindo.</h1>
+            </div>
+            <div class="container">
+                <div class="card" style="width: 18rem;" th:each="produto : ${produtos}">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${produto.nome}">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted" th:text="${produto.categoria.nome}">Card subtitle</h6>
+                        <p class="card-text"><span th:text="${produto.descricao}"></span></p>
+                        <a href="#" class="card-link"><span th:text="${produto.valor}"></span></a>
+                        <a href="#" class="card-link">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

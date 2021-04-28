@@ -21,7 +21,7 @@ public class Categoria implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotEmpty
+	@NotEmpty(message = "O campo 'nome' é obrigatório")
 	@Column(length = 50, nullable = false)
 	private String nome;
 	
