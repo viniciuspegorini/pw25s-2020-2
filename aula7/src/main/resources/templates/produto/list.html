@@ -35,7 +35,8 @@
         <table class="table table-striped table-responsive-md">
             <thead>
             <tr>
-                <th>Código</th>
+                <th>Imagem</th>
+                <th>Imagem B64</th>
                 <th>Nome</th>
                 <th>Valor</th>
                 <th>Categoria</th>
@@ -46,7 +47,8 @@
             </thead>
             <tbody>
             <tr th:each="produto : ${produtos}">
-                <td th:text="${produto.id}">código</td>
+                <td><img style="width: 100px;" alt="imagem" th:src="@{/images/{img}(img=${produto.imagem})}" /></td>
+                <td><img style="width: 100px;" alt="imagem" th:src="'data:' + ${produto.extensaoImagemb64} + ';base64,' + ${produto.getImagemB64()}" /></td>
                 <td th:text="${produto.nome}">nome</td>
                 <td th:text="'R$ ' + ${#numbers.formatDecimal(produto.valor,3,'POINT',2,'COMMA')}"></td>
                 <td th:text="${produto.categoria.nome}"></td>

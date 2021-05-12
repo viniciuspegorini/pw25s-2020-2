@@ -13,7 +13,8 @@
         	
         	<div class="row">
 				<form th:action="@{/produto}" method="post"
-					  th:object="${produto}">
+					  th:object="${produto}"
+					  enctype="multipart/form-data">
 					<div class="row">
 						<div class="form-group">
 							<label for="id">Código</label>
@@ -84,9 +85,27 @@
 							></span>
 						</div>
 					</div> <!-- FIM MARCA -->
+					<div class="form-group">
+						<label for="anexo">Imagem (uma imagem apenas)</label>
+						<input type="file" name="anexo" id="anexo"
+							   class="form-control"
+							   accept="image/*"
+						/>
+						<!-- accept="image/x-png,image/gif,image/jpeg"
+						 ou deixar vazio para aceitar qualquer extensão de arquivo-->
+					</div> <!-- Anexo arquivo único -->
+					<div class="form-group">
+						<label for="anexos">Imagens (várias imagens)</label>
+						<input type="file" name="anexos" id="anexos"
+							   class="form-control"
+							   accept="image/*"
+							   multiple
+						/>
+					</div> <!-- Anexo vários arquivos -->
+
+
 					<div class="row">
-						<button class="btn btn-primary" type="submit">Salvar
-						</button>
+						<button class="btn btn-primary" type="submit">Salvar</button>
 					</div>
 				</form>
         	</div> <!-- FIM div row -->
