@@ -126,8 +126,7 @@ public class ProdutoController {
 
 	// Método que salva vários arquivos no disco.
 	private void saveFiles(Produto entity, MultipartFile[] anexos, HttpServletRequest request) {
-		File dir = new File(request.getServletContext()
-				.getRealPath("/images/"));
+		File dir = new File(request.getServletContext().getRealPath("/images/"));
 		if (!dir.exists()) {
 			dir.mkdirs();
 		}

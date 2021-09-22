@@ -39,7 +39,7 @@ public class Produto implements Serializable{
 	private Marca marca;
 
 	@Column(name = "imagem", length = 10)
-	private String imagem;
+	private String imagem; // apenas o nome da imagem com extensão
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "produto")
 	private List<ImagemProduto> imagemProdutos;
@@ -48,7 +48,7 @@ public class Produto implements Serializable{
 	@Column(name="imagemb64")
 	private byte[] imagemB64;
 
-	@Column(name = "extensao_imagemb64", length = 10)
+	@Column(name = "extensao_imagemb64", length = 20)
 	private String extensaoImagemb64;
 
 	public String getImagemB64(){

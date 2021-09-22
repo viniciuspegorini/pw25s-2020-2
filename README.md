@@ -3,7 +3,7 @@
 ## Softwares
 
 ### IDE:
-	- JDK 11 ou superior.
+	- JDK 11 ou superior...
 	- IDE: 
 		- Spring Tool Suite 4
 		- IntelliJ Idea
@@ -11,7 +11,7 @@
 	- SGBD:
 		- Postgresql
 	- Relatórios:
-		- Jaspersoft Studio		
+		- Jaspersoft Studio
 	- Git
 		- Curso de Git: https://www.udemy.com/git-e-github-para-iniciantes/
 	
